@@ -1,0 +1,55 @@
+<form [formGroup]="conta">
+    <div class="container-form">
+    <div class="container-header">
+      
+      <p>
+        <mat-toolbar class="justify-center">
+          <span>Conta a pagar</span>
+        </mat-toolbar>
+      </p>
+    </div>
+    <mat-form-field>
+      <mat-label>Descrição</mat-label>
+      <input
+        matInput
+        #descricao
+        [value]="descricao.value.toUpperCase()"
+        maxlength="50"
+        formControlName="descricao"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Vencimento</mat-label>
+      <input
+        matInput
+        type="date"
+        formControlName="vencimento"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Comentários adicionais</mat-label>
+      <textarea
+        #coment
+        [value]="coment.value.toUpperCase()"
+        maxlength="500"
+        matInput
+        formControlName="comentarios"
+      ></textarea>
+    </mat-form-field>
+    
+    <div class="margin">
+      <label for="file">Boleto de pagamento: </label>
+      <input
+        type="file"
+        id="file"
+        accept="application/pdf"
+        (change)="handleFileInput($event)"
+        formControlName="boleto"
+      />
+    </div>
+    <div class="btns-salve">
+      <button (click)="salvar()" mat-raised-button color="primary">Salvar</button>
+      <button (click)="cancelar()" mat-raised-button color="warn">Cancelar</button>
+    </div>
+  </div>
+  </form>

@@ -1,0 +1,9 @@
+/* .msg-container{
+    width: fit-content;
+} */
+
+.btns-confirm {
+  display: flex;
+  justify-content: space-around;
+  margin: 1px;
+}

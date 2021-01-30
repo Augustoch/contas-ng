@@ -1,0 +1,19 @@
+<div class="container-login" >
+    <div class="continer-fields">
+        <mat-form-field class="example-full-width">
+          <mat-label>Login</mat-label>
+          <input matInput />
+        </mat-form-field>
+        
+        <mat-form-field class="example-full-width">
+          <mat-label>Senha</mat-label>
+          <input type="password" matInput  />
+        </mat-form-field>
+        
+        
+        <button [routerLink]="['/perfil']"  mat-raised-button color="primary">Entrar</button>
+        
+    </div>
+</div>
+
+<router-outlet></router-outlet>

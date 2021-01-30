@@ -1,0 +1,56 @@
+
+.container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-header{
+    width:100%;
+}
+
+.justify-center{
+    justify-content: center;    
+}
+
+.table{
+    width: 100%;
+    /* height: 95%; */
+}
+
+.container-body{
+    width: 100%;
+    height: 100%;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+.coluna-id{
+    width: 7%;
+}
+
+.coluna-desc{
+    width: 30%;
+}
+
+.col-situacao{
+    width: 20%;
+}
+
+.col-venci{
+    width: 8%;
+}
+
+.verde{
+    background-color: #8bde16;
+}
+
+
+.posicao-btn-menu{
+    position: absolute;
+    top: 1%;
+    right: 0%;
+}

@@ -1,0 +1,46 @@
+<p>
+  <mat-toolbar class="justify-center">
+    <span>Anexar comprovante de pagamento</span><br />
+  </mat-toolbar>
+</p>
+<h3>
+  <b>ID:</b>{{ data.idConta }}, <b>DESCRIÇÃO:</b>{{ data.descricaoConta }},
+  <b>VENCIMENTO:</b> {{ data.vencimento | date: "dd/MM/yyyy" }}
+</h3>
+<div class="content">
+  <form [formGroup]="contaPagamento">
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Conta de saída</mat-label>
+        <mat-select formControlName="idContaSaida">
+          <mat-option *ngFor="let dado of dcb" [value]="dado.id">
+            {{ dado.descricao }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Comentários de pagamento</mat-label>
+        <textarea
+          formControlName="comentarioDePagamento"
+          #coment
+          [value]="coment.value.toUpperCase()"
+          maxlength="500"
+          matInput
+        ></textarea>
+      </mat-form-field>
+    </div>
+    <div class="margin">
+      <label for="file">Comprovante de pagamento: </label>
+      <input
+      formControlName="comprovante"
+        type="file"
+        id="file"
+        accept="application/pdf"
+        (change)="handleFileInput($event)"
+      />
+    </div>
+  </form>
+</div>
+<button (click)="salvar()" mat-raised-button color="primary"><mat-icon>save</mat-icon></button>

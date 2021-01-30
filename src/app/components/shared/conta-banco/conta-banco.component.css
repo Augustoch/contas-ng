@@ -1,0 +1,13 @@
+.table-conf{
+    width: 100%;
+}
+
+.largura-field{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.largura-des{
+    width: 80%;    
+}

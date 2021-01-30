@@ -1,0 +1,14 @@
+.container-perfil{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    flex-direction: column;
+}
+
+.container{
+    justify-content: center;
+    height: 100%;
+    display: flex;
+    width: 100%;
+}
