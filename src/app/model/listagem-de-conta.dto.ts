@@ -11,4 +11,7 @@ export class ListagemDeContaDTO {
   nomeBoleto: string;
   idComprovante: number;
   nomeComprovante: string;
+  
+  estaVencida: boolean;
+  venceHoje: boolean;
 }

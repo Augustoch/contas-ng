@@ -1,17 +1,26 @@
 <div class="container-login" >
     <div class="continer-fields">
-        <mat-form-field class="example-full-width">
-          <mat-label>Login</mat-label>
-          <input matInput />
-        </mat-form-field>
+        <form [formGroup]="formLogin" class="form-flex">
+          <mat-form-field>
+            <mat-label>Usuario</mat-label>
+            <input formControlName="usuario" matInput />
+            <mat-error *ngIf="formLogin.controls.usuario.hasError('required')">
+              Usuario requerido
+            </mat-error>
+          </mat-form-field>
+          
+          <mat-form-field>
+            <mat-label>Senha</mat-label>
+            <input formControlName="senha" type="password" matInput  />
+            <mat-error *ngIf="formLogin.controls.senha.hasError('required')">
+              Senha requerida
+            </mat-error>
+          </mat-form-field>          
+        </form>
         
-        <mat-form-field class="example-full-width">
-          <mat-label>Senha</mat-label>
-          <input type="password" matInput  />
-        </mat-form-field>
         
-        
-        <button [routerLink]="['/perfil']"  mat-raised-button color="primary">Entrar</button>
+        <!-- <button [routerLink]="['/perfil']"  mat-raised-button color="primary">Entrar</button> -->
+        <button (click)="login()" [disabled]="formLogin.invalid" mat-raised-button color="primary">Entrar</button>
         
     </div>
 </div>

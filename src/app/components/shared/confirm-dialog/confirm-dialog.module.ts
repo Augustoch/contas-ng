@@ -4,9 +4,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { NgModule } from '@angular/core';
 
 import { ConfirmDialogComponent } from './confirm-dialog.component';
+import { MaterialModule } from '../material-util.module';
 
 @NgModule({
-    imports: [MatButtonModule, MatToolbarModule],
+    imports: [MaterialModule],
     exports: [ConfirmDialogComponent],
     declarations: [ConfirmDialogComponent],
     providers: [ConfirmDialogService],

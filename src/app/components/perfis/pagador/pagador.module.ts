@@ -1,38 +1,33 @@
+import { PesquisaFormModule } from './pesquisa-form/pesquisa-form.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PagadorDataService } from './pagador.data-service';
+import { PagadorListModule } from './pagador-list/pagador-list.module';
+import { MaterialModule } from './../../shared/material-util.module';
+import { ComentarioModule } from './../../shared/comentario/comentario.module';
 import { ContaBancoModule } from './../../shared/conta-banco/conta-banco.module';
 import { ContaPagamentoModule } from './../../shared/conta-pagamento/conta-pagamento.module';
-import { MatIconModule } from '@angular/material/icon';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatDividerModule } from '@angular/material/divider';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
 
 import { PagadorComponent } from './pagador.component';
 import { FormContaModule } from '../../shared/form-conta/form-conta.module';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { ViewPDFModule } from '../../shared/pdf/view-pdf.module';
-import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     FormContaModule,
-    MatToolbarModule,
-    MatDividerModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatTableModule,
-    MatIconModule,
-    MatTooltipModule,
+    MaterialModule,
     ViewPDFModule,
     ContaPagamentoModule,
-    MatMenuModule,
-    ContaBancoModule
+    PagadorListModule,
+    ContaBancoModule,
+    ComentarioModule,
+    PesquisaFormModule
   ],
   exports: [PagadorComponent],
   declarations: [PagadorComponent],
-  providers: [],
+  providers: [PagadorDataService],
 })
 export class PagadorModule {}

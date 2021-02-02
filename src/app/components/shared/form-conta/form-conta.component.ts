@@ -1,3 +1,4 @@
+import { PagadorDataService } from './../../perfis/pagador/pagador.data-service';
 import { BehaviorSubject } from 'rxjs';
 import { ConfirmDialogService } from '../confirm-dialog/confirm-dialog.service';
 import { ContaDTO } from '../../../model/conta.dto';
@@ -15,14 +16,15 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class FormContaComponent implements OnInit {
   arquivo: any;
   conta: FormGroup;
-  foiSalvo = new BehaviorSubject<boolean>(false);
+  //foiSalvo = new BehaviorSubject<boolean>(false);
 
   constructor(
     private _fb: FormBuilder,
     private _boleto: ContaPagarService,
     private _snackBar: MatSnackBar,
     private _cd: ConfirmDialogService,
-    public dialogRef: MatDialogRef<FormContaComponent>
+    public dialogRef: MatDialogRef<FormContaComponent>,
+    private _pagadoDS: PagadorDataService
   ) {}
 
   ngOnInit() {
@@ -46,24 +48,23 @@ export class FormContaComponent implements OnInit {
 
       this._boleto.salvar(conta).subscribe(()=>{
         this._snackBar.open('Salvo com sucesso!', 'X')
-        this.dialogRef.close();
-        this.foiSalvo.next(true);
-      }, (responseErro) => this._snackBar.open(responseErro.error.message, 'X'));
+        this.fecharDialog();
+      });
     } else {
       this._snackBar.open('Dados incompletos, verifique os campos!', 'X');
     }
   }
   
+  private fecharDialog() {
+    this._pagadoDS.atualizarLista();
+    this.dialogRef.close();
+  }
+
   cancelar() {
     this._cd.showConfirmDialog('Deseja cancelar ?').subscribe((cancelar)=>{
       if(cancelar){
-        this.dialogRef.close();
-        this.foiSalvo.next(false);
+        this.fecharDialog()
       }
     });
-  }
-  
-  onClose(){
-    return this.foiSalvo.asObservable();
   }
 }

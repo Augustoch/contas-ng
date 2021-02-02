@@ -1,7 +1,6 @@
 <form [formGroup]="conta">
-    <div class="container-form">
+  <div class="container-form">
     <div class="container-header">
-      
       <p>
         <mat-toolbar class="justify-center">
           <span>Conta a pagar</span>
@@ -17,14 +16,16 @@
         maxlength="50"
         formControlName="descricao"
       />
+      <mat-error *ngIf="!conta.hasError('required')">
+        adicione a descrição
+      </mat-error>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Vencimento</mat-label>
-      <input
-        matInput
-        type="date"
-        formControlName="vencimento"
-      />
+      <input matInput type="date" formControlName="vencimento" />
+      <mat-error *ngIf="!conta.hasError('required')">
+        adicione a vencimento
+      </mat-error>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Comentários adicionais</mat-label>
@@ -36,7 +37,7 @@
         formControlName="comentarios"
       ></textarea>
     </mat-form-field>
-    
+
     <div class="margin">
       <label for="file">Boleto de pagamento: </label>
       <input
@@ -48,8 +49,12 @@
       />
     </div>
     <div class="btns-salve">
-      <button (click)="salvar()" mat-raised-button color="primary">Salvar</button>
-      <button (click)="cancelar()" mat-raised-button color="warn">Cancelar</button>
+      <button (click)="salvar()" mat-raised-button color="primary">
+        Salvar
+      </button>
+      <button (click)="cancelar()" mat-raised-button color="warn">
+        Cancelar
+      </button>
     </div>
   </div>
-  </form>
+</form>

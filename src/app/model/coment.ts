@@ -1,3 +1,4 @@
-export interface Coment {
-    descricao: string;
+export interface Comentario {
+    addConta: string;
+    pagamento: string
 }

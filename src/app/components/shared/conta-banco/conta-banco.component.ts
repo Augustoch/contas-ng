@@ -1,7 +1,6 @@
 import { DadoContaBancaria } from './../../../model/dado-conta-bancaria';
-import { uppercase } from './../../../util/utils';
 import { ContaBancoService } from './../../../services/conta-banco.service';
-import { FormControl, FormControlName, Validators } from '@angular/forms';
+import { FormControl,  Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 export interface PeriodicElement {

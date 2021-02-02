@@ -1,0 +1,75 @@
+<table mat-table [dataSource]="dataSource" class="table">
+      
+    <ng-container matColumnDef="id">
+      <th class="coluna-id" mat-header-cell *matHeaderCellDef>Id.</th>
+      <td mat-cell *matCellDef="let element">{{ element.idConta }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="descricaoConta">
+      <th class="coluna-desc" mat-header-cell *matHeaderCellDef>Descrição</th>
+      <td mat-cell *matCellDef="let element">{{ element.descricaoConta }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="vencimento">
+      <th class="col-venci" mat-header-cell *matHeaderCellDef>Vencimento</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.vencimento | date: "dd/MM/yyyy" }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="situacaoConta">
+      <th class="col-situacao" mat-header-cell *matHeaderCellDef>Situação</th>
+      <td mat-cell *matCellDef="let element">{{ element.situacaoConta | situacao }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef>Ações</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          (click)="deletar(element.idConta, element.descricaoConta)"
+          mat-mini-fab
+          color="warn"
+          matTooltip="Apagar conta"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button
+          (click)="verComentario(element.comentarios, element.comentarioDePagamento)"
+          mat-mini-fab
+          matTooltip="Ver comentário"
+          style="background-color: #8bde16"
+        >
+          <mat-icon>comment</mat-icon>
+        </button>
+        <button
+          (click)="visualizar(element.idBoleto, element.nomeBoleto)"
+          mat-mini-fab
+          matTooltip="Visualizar boleto {{ element.nomeBoleto }}"
+          style="background-color: #000000"
+        >
+          <mat-icon>picture_as_pdf</mat-icon>
+        </button>
+        <button *ngIf="element.idComprovante"
+          (click)="visualizar(element.idComprovante, element.nomeComprovante)"
+          mat-mini-fab
+          matTooltip="Visualizar comprovante {{ element.nomeComprovante }}"
+          style="background-color: #0095ec"
+        >
+          <mat-icon>picture_as_pdf</mat-icon>
+        </button>
+        <button *ngIf="element.situacaoConta == 'AGUARDANDO_PAGAMENTO'"
+          (click)="
+            pagar(element.idConta, element.descricaoConta, element.vencimento)
+          "
+          mat-mini-fab
+          matTooltip="Pagar"
+          style="background-color: #09ff00"
+        >
+          <mat-icon>check_box</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr [class]="getClass(row)" mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>

@@ -1,4 +1,8 @@
-<p>
-    {{data.descricao}}
-</p>
-    
+<h3><b>Comentário ao adicionar conta</b></h3>
+<mat-form-field class="textarea-width">
+  <textarea [value]="comentario.addConta" disabled="true" matInput [rows]="10"></textarea>
+</mat-form-field>
+<h3><b>Comentário ao pagar conta</b></h3>
+<mat-form-field class="textarea-width">
+  <textarea [value]="comentario.pagamento" disabled="true" [rows]="10" matInput></textarea>
+</mat-form-field>

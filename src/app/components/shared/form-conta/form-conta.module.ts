@@ -10,17 +10,15 @@ import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '../material-util.module';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    MatInputModule,
-    MatToolbarModule,
     HttpClientModule,
-    MatButtonModule,
-    MatIconModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    MaterialModule
   ],
   exports: [FormContaComponent],
   declarations: [FormContaComponent],

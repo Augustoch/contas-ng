@@ -1,3 +1,4 @@
+import { SpinnerContainerModule } from './components/shared/spinner/spinner-container.module';
 import { PagadorModule } from './components/perfis/pagador/pagador.module';
 import { LancadorModule } from './components/perfis/lancador/lancador.module';
 import { EscolherPerfilModule } from './components/escolher-perfil/escolher-perfil.module';
@@ -13,6 +14,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ViewPDFModule } from './components/shared/pdf/view-pdf.module';
+import { RequestInterceptorModule } from './util/interceptors/erro/request-interceptor.module';
+import { JWTInterceptorModule } from './util/interceptors/jwt/jwt-interceptor.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { ViewPDFModule } from './components/shared/pdf/view-pdf.module';
     LancadorModule,
     PagadorModule,
     MatProgressSpinnerModule,
-    ViewPDFModule
+    ViewPDFModule,
+    RequestInterceptorModule,
+    JWTInterceptorModule,
+    SpinnerContainerModule
     
   ],
   providers: [],

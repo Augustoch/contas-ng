@@ -8,16 +8,12 @@ import { ContaBancoComponent } from './conta-banco.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '../material-util.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    MatFormFieldModule,
-    MatToolbarModule,
-    MatInputModule,
-    MatTableModule,
-    MatButtonModule,
-    MatIconModule,
+    MaterialModule,
     ReactiveFormsModule,
   ],
   exports: [],

@@ -1,0 +1,55 @@
+<form [formGroup]="pesquisaContaDTO" class="full-width">
+    <div class="inside-position">
+        <div class="id">
+          <mat-form-field>
+            <mat-label>Id.</mat-label>
+            <input formControlName="id" matInput type="number" />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-label>Descrição</mat-label>
+            <input formControlName="descricao" matInput type="text" />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-label>Venc. inicial</mat-label>
+            <input formControlName="vencInicial" matInput type="date" />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-label>Venc. final</mat-label>
+            <input formControlName="vencFinal" matInput type="date" />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Situação</mat-label>
+            <mat-select formControlName="situacao">
+              <mat-option
+                *ngFor="let situacao of sitaucoes"
+                [value]="situacao.id"
+              >
+                {{ situacao.desc }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Conta de saída</mat-label>
+            <mat-select  formControlName="idContaSaida">
+              <mat-option *ngFor="let dado of dcb" [value]="dado.id">
+                {{ dado.descricao }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <button (click)="pesquisar()"  matTooltip="Pesquisar" mat-raised-button><mat-icon>search</mat-icon></button>
+          <button (click)="limpar()" matTooltip="Limpar" mat-raised-button><mat-icon>clear</mat-icon></button>
+        </div>
+      </div>
+    </form>

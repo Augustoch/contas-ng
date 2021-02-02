@@ -11,94 +11,35 @@
             <button (click)="cadastrarConta()" mat-menu-item>
               Cadastrar conta
             </button>
+            <button (click)="cadastrarConta()" mat-menu-item>
+              Cadastrar empresa
+            </button>
           </mat-menu>
+        </div>
+        <div class="posicao-btn-user">
+          <button mat-button [matMenuTriggerFor]="logMenu">
+            <mat-icon>person</mat-icon>
+          </button>
+          <mat-menu #logMenu="matMenu">
+            <button (click)="logOut()" mat-menu-item>
+              logout
+            </button>
+          </mat-menu>
+          <span>{{this.authenticationService.getUserName().toUpperCase()}}</span>
         </div>
       </mat-toolbar>
     </p>
   </div>
   <div class="container-body">
     <mat-divider></mat-divider>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table">
-      <!--- Note that these columns can be defined in any order.
-                  The actual rendered columns are set as a property on the row definition" -->
-
-      <!-- Position Column -->
-      <ng-container matColumnDef="id">
-        <th class="coluna-id" mat-header-cell *matHeaderCellDef>Id.</th>
-        <td mat-cell *matCellDef="let element">{{ element.idConta }}</td>
-      </ng-container>
-
-      <!-- Name Column -->
-      <ng-container matColumnDef="descricaoConta">
-        <th class="coluna-desc" mat-header-cell *matHeaderCellDef>Descrição</th>
-        <td mat-cell *matCellDef="let element">{{ element.descricaoConta }}</td>
-      </ng-container>
-
-      <!-- Weight Column -->
-      <ng-container matColumnDef="vencimento">
-        <th class="col-venci" mat-header-cell *matHeaderCellDef>Vencimento</th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.vencimento | date: "dd/MM/yyyy" }}
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="situacaoConta">
-        <th class="col-situacao" mat-header-cell *matHeaderCellDef>Situação</th>
-        <td mat-cell *matCellDef="let element">{{ element.situacaoConta }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="acoes">
-        <th mat-header-cell *matHeaderCellDef>Ações</th>
-        <td mat-cell *matCellDef="let element">
-          <button
-            (click)="deletar(element.idConta, element.descricaoConta)"
-            mat-mini-fab
-            color="warn"
-            matTooltip="Apagar conta"
-          >
-            <mat-icon>delete</mat-icon>
-          </button>
-          <button
-            (click)="verComentario(element.comentarios)"
-            mat-mini-fab
-            matTooltip="Ver comentário"
-            style="background-color: #8bde16"
-          >
-            <mat-icon>comment</mat-icon>
-          </button>
-          <button
-            (click)="visualizar(element.idBoleto, element.nomeBoleto)"
-            mat-mini-fab
-            matTooltip="Visualizar boleto {{ element.nomeBoleto }}"
-            style="background-color: #000000"
-          >
-            <mat-icon>picture_as_pdf</mat-icon>
-          </button>
-          <button *ngIf="element.idComprovante"
-            (click)="visualizar(element.idComprovante, element.nomeComprovante)"
-            mat-mini-fab
-            matTooltip="Visualizar comprovante {{ element.nomeComprovante }}"
-            style="background-color: #0095ec"
-          >
-            <mat-icon>picture_as_pdf</mat-icon>
-          </button>
-          <button *ngIf="element.situacaoConta == 'AGUARDANDO_PAGAMENTO'"
-            (click)="
-              pagar(element.idConta, element.descricaoConta, element.vencimento)
-            "
-            mat-mini-fab
-            matTooltip="Pagar"
-            style="background-color: #09ff00"
-          >
-            <mat-icon>check_box</mat-icon>
-          </button>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
+    <div class="full-width">
+      <pesquisa-form class="full-width" ></pesquisa-form>
+    </div>
+    <mat-divider></mat-divider>
     <div>
+      <pagador-list></pagador-list>
+    </div>
+    <div class="rodape">
       <mat-divider></mat-divider>
       <button
         (click)="abrirFormConta()"
@@ -108,6 +49,16 @@
       >
         <mat-icon>add_box</mat-icon>
       </button>
+      <div class="disp-leg">
+        <div class="posicao-leg"> 
+          <div class="legenda vencida"></div>
+          <span>Vencida</span>        
+        </div>
+        <div class="posicao-leg">
+          <div class="legenda vence-hoje"></div>        
+          <span>Vence hoje</span>
+        </div>
+      </div>
       <mat-divider></mat-divider>
     </div>
   </div>

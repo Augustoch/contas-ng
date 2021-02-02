@@ -1,3 +1,4 @@
+import { AuthGuard } from './util/auth-guard';
 import { PagadorComponent } from './components/perfis/pagador/pagador.component';
 import { Login } from './components/login/login';
 import { EscolherPerfilComponent } from './components/escolher-perfil/escolher-perfil.component';
@@ -6,10 +7,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { LancadorComponent } from './components/perfis/lancador/lancador.component';
 
 const routes: Routes = [
-  {path: '', component: Login},
-  {path: 'perfil', component: EscolherPerfilComponent},
-  {path: 'lancador', component: LancadorComponent},
-  {path: 'pagador', component: PagadorComponent}
+  {path: '', redirectTo: '/login', pathMatch:'full',},
+  {path: 'login', component: Login,},
+  {path: 'perfil', component: EscolherPerfilComponent, canActivate: [AuthGuard]},
+  {path: 'lancador', component: LancadorComponent, canActivate: [AuthGuard]},
+  {path: 'pagador', component: PagadorComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

@@ -13,3 +13,8 @@
     align-items: center;
     display: flex;
 }
+
+.form-flex{
+    display: flex;
+    flex-direction: column;
+}

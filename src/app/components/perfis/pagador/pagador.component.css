@@ -1,56 +1,78 @@
-
-.container{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.container-header{
-    width:100%;
+.container-header {
+  width: 100%;
 }
 
-.justify-center{
-    justify-content: center;    
+.justify-center {
+  justify-content: center;
 }
 
-.table{
-    width: 100%;
-    /* height: 95%; */
+.container-body {
+  width: 100%;
+  height: 100%;
 }
 
-.container-body{
-    width: 100%;
-    height: 100%;
+.verde {
+  background-color: #8bde16;
 }
 
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-.coluna-id{
-    width: 7%;
+.posicao-btn-menu {
+  position: absolute;
+  top: 1%;
+  right: 0%;
 }
 
-.coluna-desc{
-    width: 30%;
+.full-width {
+  display: flex;
+  width: 100%;
+  justify-content: center;
 }
 
-.col-situacao{
-    width: 20%;
+.inside-position {
+  width: 98%;
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
 }
 
-.col-venci{
-    width: 8%;
+.rodape {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.verde{
-    background-color: #8bde16;
+.legenda{
+    width: 24px;
+    height: 21px;
 }
 
+.vencida{
+  background-color: #ff000c3d !important;
+}
 
-.posicao-btn-menu{
-    position: absolute;
-    top: 1%;
-    right: 0%;
+.vence-hoje{
+  background-color: #ffeb017d !important;
+}
+
+.posicao-leg{
+  display: flex;
+    align-items: center;
+}
+
+.disp-leg{
+  display: flex;
+  position: absolute;
+  right: 0%;
+}
+
+.posicao-btn-user{
+  position: absolute;
+  top: 1%;
+  left: 0%;
 }

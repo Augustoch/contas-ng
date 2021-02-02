@@ -1,4 +1,4 @@
 export interface DadoContaBancaria{
-    id: number;
+    id: number | null;
     descricao: string
 }

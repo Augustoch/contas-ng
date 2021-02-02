@@ -8,9 +8,10 @@ import { NgModule } from '@angular/core';
 
 import { ContaPagamentoComponent } from './conta-pagamento.component';
 import { MatInputModule } from '@angular/material/input';
+import { MaterialModule } from '../material-util.module';
 
 @NgModule({
-  imports: [CommonModule, MatToolbarModule, MatSelectModule, MatInputModule, ReactiveFormsModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule, MaterialModule, ReactiveFormsModule],
   exports: [ContaPagamentoComponent],
   declarations: [ContaPagamentoComponent],
   providers: [],

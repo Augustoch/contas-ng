@@ -1,0 +1,33 @@
+
+.vencida{
+    background-color: #ff000c3d !important;
+}
+
+.vence-hoje{
+    background-color: #ffeb017d !important;
+}
+
+.table{
+    width: 100%;
+    /* height: 95%; */
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+.coluna-id{
+    width: 7%;
+}
+
+.coluna-desc{
+    width: 30%;
+}
+
+.col-situacao{
+    width: 20%;
+}
+
+.col-venci{
+    width: 8%;
+}

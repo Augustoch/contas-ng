@@ -1,4 +1,4 @@
-export const uppercase = (obj: Object) => {
+export const uppercase = (obj: any) => {
   if (typeof obj === 'object') {
     for (const key in obj) {
       if (typeof obj[key] === 'string') {
@@ -8,4 +8,12 @@ export const uppercase = (obj: Object) => {
       }
     }
   }
+};
+
+export const generate = () => {
+  let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+
+  return `:host ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {   
+          stroke: #${randomColor};
+      }`;
 };

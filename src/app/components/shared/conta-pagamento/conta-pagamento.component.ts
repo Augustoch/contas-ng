@@ -1,4 +1,4 @@
-import { uppercase } from './../../../util/utils';
+import { PagadorDataService } from './../../perfis/pagador/pagador.data-service';
 import { ContaPagarService } from 'src/app/services/boleto.service';
 import { SalvarPagamentoDTO } from './../../../model/salvar-pagamento.dto';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -19,7 +19,6 @@ export class ContaPagamentoComponent implements OnInit {
   dcb: Array<DadoContaBancaria> = new Array();
   arquivo: any;
   contaPagamento: FormGroup;
-  private foiSalvo = new BehaviorSubject<boolean>(false);
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: Conta,
@@ -27,7 +26,8 @@ export class ContaPagamentoComponent implements OnInit {
     private fb: FormBuilder,
     private _cp: ContaPagarService,
     private _snackBar: MatSnackBar,
-    public dialogRef: MatDialogRef<ContaPagamentoComponent>
+    public dialogRef: MatDialogRef<ContaPagamentoComponent>,
+    private _pagadorDS: PagadorDataService
   ) {}
 
   ngOnInit() {
@@ -54,17 +54,12 @@ export class ContaPagamentoComponent implements OnInit {
       const value = this.contaPagamento.value as SalvarPagamentoDTO;
       value.comprovante = this.arquivo;
       value.idContaPagar = this.data.idConta;
-      uppercase(value);
       this._cp.salvarPagamento(value).subscribe(()=>{
-        this.foiSalvo.next(true);
+        this._pagadorDS.atualizarLista()
         this.dialogRef.close();
       });
     } else {
       this._snackBar.open('Dados incompletos, verifique os campos!', 'X');
     }
-  }
-  
-  onClose(){
-    return this.foiSalvo.asObservable();
   }
 }

@@ -1,0 +1,13 @@
+.full-width {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .inside-position{
+    width: 98%;
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
