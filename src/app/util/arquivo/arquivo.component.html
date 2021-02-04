@@ -1,0 +1,12 @@
+<div class="margin">
+    <label for="file">{{label}}</label>
+    <input
+      type="file"
+      id="file"
+      [accept]="accept"
+      [disabled]="disabled"
+      (change)="handleFileInput($event)"
+      formControlName="boleto"
+      (click)="click()"
+    />
+  </div>

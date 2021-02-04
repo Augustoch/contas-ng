@@ -11,7 +11,8 @@ export class ContaDTO{
              this.comentarios= conta.comentarios?.toUpperCase() ?? '';
              this.descricao = conta.descricao?.toUpperCase() ?? '';
              this.vencimento = conta.vencimento?.toUpperCase() ?? '';
-             this.idEmpresaResposavel = conta.idEmpresaResposavel
+             this.idEmpresaResposavel = conta.idEmpresaResposavel;
+             this.boleto = conta.boleto;
          }
      }
 }

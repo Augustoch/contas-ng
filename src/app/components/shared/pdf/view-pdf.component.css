@@ -2,3 +2,27 @@
   display: flex;
   justify-content: space-between;
 }
+
+.header-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 13%;
+}
+
+.add-container {
+  display: flex;
+  width: 100%;
+}
+
+.sub-add-container {
+  width: 60%;
+  display: flex;
+  justify-content: flex-start;
+}
+.btn-flex{
+  width: 17%;
+  display: flex;
+  justify-content: space-between;
+  
+}

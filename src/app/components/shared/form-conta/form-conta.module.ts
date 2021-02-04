@@ -1,3 +1,4 @@
+import { ArquivoModule } from './../../../util/arquivo/arquivo.module';
 import { ConfirmDialogModule } from '../confirm-dialog/confirm-dialog.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -18,7 +19,8 @@ import { MaterialModule } from '../material-util.module';
     ReactiveFormsModule,
     HttpClientModule,
     ConfirmDialogModule,
-    MaterialModule
+    MaterialModule,
+    ArquivoModule
   ],
   exports: [FormContaComponent],
   declarations: [FormContaComponent],

@@ -1,3 +1,5 @@
+import { HttpParams } from "@angular/common/http";
+
 export const uppercase = (obj: any) => {
   if (typeof obj === 'object') {
     for (const key in obj) {
@@ -10,14 +12,13 @@ export const uppercase = (obj: any) => {
   }
 };
 
+export const naoEKeyUppercaseAble = (keyCompare: string) => {
+  return !keysToNotUpdate.some((key) => {
+    return key === keyCompare;
+  });
+};
 
-export const naoEKeyUppercaseAble = (keyCompare: string)=>{
-   return !keysToNotUpdate.some((key)=>{
-      return key === keyCompare    
-  })
-}
-
-export const keysToNotUpdate = ['senha']
+export const keysToNotUpdate = ['senha'];
 
 export const generate = () => {
   let randomColor = Math.floor(Math.random() * 16777215).toString(16);
@@ -25,4 +26,27 @@ export const generate = () => {
   return `:host ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {   
           stroke: #${randomColor};
       }`;
+};
+
+export const formData = (obj) => {
+  const data = new FormData();
+
+  for (const chave in obj) {
+    if (obj[chave]) {
+      data.append(chave, obj[chave]);
+    }
+  }
+  return data;
+};
+
+export const httpParams = (obj) => {
+  let params = new HttpParams();
+
+  for (const key in obj) {
+    if (Boolean(obj[key]) || obj[key] === '') {
+      params = params.append(key, obj[key]);
+    }
+  }
+  
+  return {params}
 };

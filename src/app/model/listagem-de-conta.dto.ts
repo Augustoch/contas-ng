@@ -12,6 +12,11 @@ export class ListagemDeContaDTO {
   idComprovante: number;
   nomeComprovante: string;
   
+  contaDeSaida: string;
+  
+  empresaResponsavel: string;
+  empresaPagamento: string;  
+  
   estaVencida: boolean;
   venceHoje: boolean;
 }

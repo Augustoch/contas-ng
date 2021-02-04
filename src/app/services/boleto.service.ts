@@ -6,6 +6,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { apendApi } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { ListagemDeContaDTO } from '../model/listagem-de-conta.dto';
+import { formData, httpParams } from '../util/utils';
 
 @Injectable({providedIn: 'root'})
 export class ContaPagarService {
@@ -16,26 +17,11 @@ export class ContaPagarService {
     
     
     salvar(conta: ContaDTO){
-       const data = new FormData();
-       
-       for (const chave in conta) {
-           if (conta[chave]) {
-                data.append(chave, conta[chave])               
-           }
-       }      
-       
-       return this.http.post( this.path,data);
+       return this.http.post( this.path,formData(conta));
     }
     
     obterContas(pesquisa?: PesquisaContaDTO){
-        let params = new HttpParams();
-        
-        for (const key in pesquisa) {
-            if(Boolean(pesquisa[key]) || pesquisa[key] === ""){
-                params = params.append(key, pesquisa[key])                
-            }
-        }
-        return this.http.get<Array<ListagemDeContaDTO>>(this.path, {params: params})
+        return this.http.get<Array<ListagemDeContaDTO>>(this.path, httpParams(pesquisa))
     }
     
     deletar(id: number){
@@ -43,14 +29,7 @@ export class ContaPagarService {
     }
     
     salvarPagamento(pagamento: SalvarPagamentoDTO){
-        const data = new FormData();
-        for (const key in pagamento) {
-            if(pagamento[key]){
-                data.append(key, pagamento[key])
-            }
-        }
-        
-        return this.http.put(this.path, data);
+        return this.http.put(this.path, formData(pagamento));
     }
     
     

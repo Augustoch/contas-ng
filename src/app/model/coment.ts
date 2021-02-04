@@ -1,4 +1,7 @@
 export interface Comentario {
-    addConta: string;
-    pagamento: string
+  contaDeSaida: string;
+  empresaResponsavel: string;
+  empresaPagamento: string;
+  addConta: string;
+  pagamento: string;
 }

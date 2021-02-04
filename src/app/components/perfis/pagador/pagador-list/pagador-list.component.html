@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="dataSource" class="table">
+<table mat-table [dataSource]="dataSource" matSort  class="table">
   <ng-container matColumnDef="select">
     <th mat-header-cell *matHeaderCellDef>
       <mat-checkbox
@@ -18,32 +18,32 @@
     </td>
   </ng-container>
 
-  <ng-container matColumnDef="id">
-    <th class="coluna-id" mat-header-cell *matHeaderCellDef>Id.</th>
+  <ng-container matColumnDef="idConta">
+    <th class="coluna-id" mat-header-cell *matHeaderCellDef mat-sort-header>Id.</th>
     <td mat-cell *matCellDef="let element">{{ element.idConta }}</td>
   </ng-container>
 
   <ng-container matColumnDef="descricaoConta">
-    <th class="coluna-desc" mat-header-cell *matHeaderCellDef>Descrição</th>
+    <th class="coluna-desc" mat-header-cell *matHeaderCellDef mat-sort-header>Descrição</th>
     <td mat-cell *matCellDef="let element">{{ element.descricaoConta }}</td>
   </ng-container>
 
   <ng-container matColumnDef="vencimento">
-    <th class="col-venci" mat-header-cell *matHeaderCellDef>Vencimento</th>
+    <th class="col-venci" mat-header-cell *matHeaderCellDef mat-sort-header>Vencimento</th>
     <td mat-cell *matCellDef="let element">
       {{ element.vencimento | date: "dd/MM/yyyy" }}
     </td>
   </ng-container>
 
   <ng-container matColumnDef="situacaoConta">
-    <th class="col-situacao" mat-header-cell *matHeaderCellDef>Situação</th>
+    <th class="col-situacao" mat-header-cell *matHeaderCellDef mat-sort-header>Situação</th>
     <td mat-cell *matCellDef="let element">
       {{ element.situacaoConta | situacao }}
     </td>
   </ng-container>
 
   <ng-container matColumnDef="acoes">
-    <th mat-header-cell *matHeaderCellDef>Ações</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Ações</th>
     <td mat-cell *matCellDef="let element">
     </td>
   </ng-container>

@@ -60,9 +60,14 @@ export class PagadorBotoesComponent implements OnInit {
       });
   }
 
-  verComentario() {
+  verInfo() {
     this.dialog.open(ComentarioComponent, {
+      height: '90%',
+      width: '80%',
       data: {
+        contaDeSaida: this.contaSelecionada.contaDeSaida,
+        empresaResponsavel: this.contaSelecionada.empresaResponsavel,
+        empresaPagamento: this.contaSelecionada.empresaPagamento,
         addConta: this.contaSelecionada.comentarios,
         pagamento: this.contaSelecionada.comentarioDePagamento,
       },

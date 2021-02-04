@@ -54,7 +54,7 @@ export class RequestInterceptor implements HttpInterceptor {
     }
     if (err.status === 500) {
       this._snackBar.open(
-        `${err.error.error} \n ${err.error.message}`,
+        `${err.error.exception} \n ${err.error.message}`,
         'Fechar',
         { duration: 3000 }
       );

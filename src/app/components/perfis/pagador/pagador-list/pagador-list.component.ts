@@ -1,26 +1,25 @@
 import { PesquisaContaDTO } from './../../../../model/pesquisa-conta.dto';
 import { PagadorDataService } from './../pagador.data-service';
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { ConfirmDialogService } from 'src/app/components/shared/confirm-dialog/confirm-dialog.service';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ListagemDeContaDTO } from 'src/app/model/listagem-de-conta.dto';
 import { ContaPagarService } from 'src/app/services/boleto.service';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'pagador-list',
   templateUrl: './pagador-list.component.html',
   styleUrls: ['./pagador-list.component.css'],
 })
-export class PagadorListComponent implements OnInit {
+export class PagadorListComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [
     'select',
-    'id',
+    'idConta',
     'descricaoConta',
     'vencimento',
     'situacaoConta',
     'acoes',
   ];
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private _boleto: ContaPagarService,
@@ -31,6 +30,10 @@ export class PagadorListComponent implements OnInit {
     this.pagadorDS.observarComandoDeAtualizarLista().subscribe((pesquisa) => {
       this.obterListaDeConta(pesquisa as PesquisaContaDTO);
     });
+  }
+  
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
   }
 
   obterListaDeConta(pesquisa?: PesquisaContaDTO) {

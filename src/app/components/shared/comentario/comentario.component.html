@@ -1,8 +1,30 @@
+<h3><b>Conta de saída</b></h3>
+<mat-form-field>
+  <input matInput readonly="true" [value]="comentario.contaDeSaida" />
+</mat-form-field>
+<h3><b>Empresa responsável</b></h3>
+<mat-form-field>
+  <input matInput readonly="true"  [value]="comentario.empresaResponsavel" />
+</mat-form-field>
+<h3><b>Empresa pagmento</b></h3>
+<mat-form-field>
+  <input matInput readonly="true"  [value]="comentario.empresaPagamento" />
+</mat-form-field>
 <h3><b>Comentário ao adicionar conta</b></h3>
 <mat-form-field class="textarea-width">
-  <textarea [value]="comentario.addConta" disabled="true" matInput [rows]="10"></textarea>
+  <textarea
+    [value]="comentario.addConta"
+    readonly="true"
+    matInput 
+    [rows]="10"
+  ></textarea>
 </mat-form-field>
 <h3><b>Comentário ao pagar conta</b></h3>
 <mat-form-field class="textarea-width">
-  <textarea [value]="comentario.pagamento" disabled="true" [rows]="10" matInput></textarea>
+  <textarea
+    [value]="comentario.pagamento"
+    readonly="true"
+    [rows]="10"
+    matInput
+  ></textarea>
 </mat-form-field>

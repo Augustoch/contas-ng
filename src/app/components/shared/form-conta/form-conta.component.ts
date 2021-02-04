@@ -17,7 +17,6 @@ import { ValueConverter } from '@angular/compiler/src/render3/view/template';
   styleUrls: ['./form-conta.component.css'],
 })
 export class FormContaComponent implements OnInit {
-  arquivo: any;
   conta: FormGroup;
   empresas: Array<Empresa>
 
@@ -48,17 +47,10 @@ export class FormContaComponent implements OnInit {
     });
   }
 
-  handleFileInput(event: any) {
-    this.arquivo = event.target.files[0];
-  }
-
   salvar() {
-    if (this.conta.valid && this.arquivo) {
+    if (this.conta.valid) {
       const conta = new ContaDTO(this.conta.value);
-      conta.boleto = this.arquivo;
-
       this._boleto.salvar(conta).subscribe(()=>{
-        this._snackBar.open('Salvo com sucesso!', 'X')
         this.fecharDialog();
       });
     } else {

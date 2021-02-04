@@ -1,3 +1,4 @@
+import { formData } from './../util/utils';
 import { apendApi } from './../../environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -21,6 +22,10 @@ export class ArquivoService {
     obterBoletoComprovante(idBoleto: number, idComprovante: number){
         let params = new HttpParams().append('idBoleto', idBoleto.toString()).append('idComprovante', idComprovante.toString());
         return this.http.get(this.path.concat(`boleto-comprovante`), {responseType: 'arraybuffer', params: params});
+    }
+    
+    atualizar(idArquivo: number, file){
+        return this.http.put(this.path, formData({idArquivo, file}))
     }
     
 }

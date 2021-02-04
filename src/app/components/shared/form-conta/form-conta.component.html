@@ -45,17 +45,9 @@
         formControlName="comentarios"
       ></textarea>
     </mat-form-field>
-
-    <div class="margin">
-      <label for="file">Boleto de pagamento: </label>
-      <input
-        type="file"
-        id="file"
-        accept="application/pdf"
-        (change)="handleFileInput($event)"
-        formControlName="boleto"
-      />
-    </div>
+    <div>
+      <arquivo label="Boleto de pagamento: " accept="application/pdf" formControlName="boleto"></arquivo>
+    </div>    
     <div class="btns-salve">
       <button (click)="salvar()" mat-raised-button color="primary">
         Salvar
