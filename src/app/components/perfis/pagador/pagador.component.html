@@ -11,7 +11,7 @@
             <button (click)="cadastrarConta()" mat-menu-item>
               Cadastrar conta
             </button>
-            <button (click)="cadastrarConta()" mat-menu-item>
+            <button (click)="cadastrarEmpresa()" mat-menu-item>
               Cadastrar empresa
             </button>
           </mat-menu>
@@ -32,34 +32,15 @@
   </div>
   <div class="container-body">
     <mat-divider></mat-divider>
-    <div class="full-width">
-      <pesquisa-form class="full-width" ></pesquisa-form>
+    <div class="form-size">
+      <pesquisa-form class="form-size" ></pesquisa-form>
     </div>
     <mat-divider></mat-divider>
-    <div>
+    <div class="lista">
       <pagador-list></pagador-list>
     </div>
     <div class="rodape">
-      <mat-divider></mat-divider>
-      <button
-        (click)="abrirFormConta()"
-        mat-raised-button
-        matTooltip="Nova conta"
-        color="primary"
-      >
-        <mat-icon>add_box</mat-icon>
-      </button>
-      <div class="disp-leg">
-        <div class="posicao-leg"> 
-          <div class="legenda vencida"></div>
-          <span>Vencida</span>        
-        </div>
-        <div class="posicao-leg">
-          <div class="legenda vence-hoje"></div>        
-          <span>Vence hoje</span>
-        </div>
-      </div>
-      <mat-divider></mat-divider>
+        <pagador-botoes class="rodape"></pagador-botoes>
     </div>
   </div>
 </div>

@@ -1,8 +1,9 @@
 import { DadoContaBancaria } from './../../../../model/dado-conta-bancaria';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { PagadorDataService } from '../pagador.data-service';
 import { ContaBancoService } from 'src/app/services/conta-banco.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'pesquisa-form',
@@ -16,7 +17,7 @@ export class PesquisaFormComponent implements OnInit {
     sitaucoes = [{ id:'AGUARDANDO_PAGAMENTO', desc: 'AGUARDANDO PAGAMENTO'}, {id:'PAGO', desc: 'PAGO'},{id:'AGUARDANDO_AUTORIZACAO', desc: 'AGUARDANDO AUTORIZAÇÃO'}];
     
     constructor(private _fb: FormBuilder, private _pagadorDS: PagadorDataService,
-        private cb: ContaBancoService,
+        private cb: ContaBancoService, private datePipe: DatePipe
     ) { }
 
     ngOnInit() { 
@@ -29,7 +30,6 @@ export class PesquisaFormComponent implements OnInit {
             idContaSaida: null
           })
           this.obterContaBancaria();
-        
     }
     
     obterContaBancaria() {

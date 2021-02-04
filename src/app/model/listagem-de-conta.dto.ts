@@ -1,8 +1,8 @@
 export class ListagemDeContaDTO {
   idConta: number;
-  descricaoConta: String;
+  descricaoConta: string;
   vencimento: Date;
-  comentarios: String;
+  comentarios: string;
   idArquivo: number;
   situacaoConta: string;
   comentarioDePagamento: string;

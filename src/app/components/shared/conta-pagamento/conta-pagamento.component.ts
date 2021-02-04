@@ -9,6 +9,8 @@ import { Conta } from 'src/app/model/conta';
 import { ContaBancoService } from 'src/app/services/conta-banco.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject } from 'rxjs';
+import { Empresa } from 'src/app/model/empresa';
+import { EmpresaService } from 'src/app/services/empresa.service';
 
 @Component({
   selector: 'conta-pagamento',
@@ -19,6 +21,7 @@ export class ContaPagamentoComponent implements OnInit {
   dcb: Array<DadoContaBancaria> = new Array();
   arquivo: any;
   contaPagamento: FormGroup;
+  empresas: Array<Empresa>;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: Conta,
@@ -27,7 +30,8 @@ export class ContaPagamentoComponent implements OnInit {
     private _cp: ContaPagarService,
     private _snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<ContaPagamentoComponent>,
-    private _pagadorDS: PagadorDataService
+    private _pagadorDS: PagadorDataService,
+    private _empresaService: EmpresaService
   ) {}
 
   ngOnInit() {
@@ -35,8 +39,16 @@ export class ContaPagamentoComponent implements OnInit {
       idContaSaida: [null, Validators.required],
       comentarioDePagamento: null,
       comprovante: null,
+      idEmpresaPagamento: [null, Validators.required]
     });
     this.obterContaBancaria();
+    this.obterEmpresas();
+  }
+  
+  private obterEmpresas() {
+    this._empresaService.obterEmpresas().subscribe((empresas) => {
+      this.empresas = empresas;
+    });
   }
 
   obterContaBancaria() {

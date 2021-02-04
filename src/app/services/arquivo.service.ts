@@ -1,5 +1,5 @@
 import { apendApi } from './../../environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
@@ -16,6 +16,11 @@ export class ArquivoService {
     
     obterArquivo(idArquivo: number){
         return this.http.get(this.path.concat(`${idArquivo}`), {responseType: 'arraybuffer'});
+    }
+    
+    obterBoletoComprovante(idBoleto: number, idComprovante: number){
+        let params = new HttpParams().append('idBoleto', idBoleto.toString()).append('idComprovante', idComprovante.toString());
+        return this.http.get(this.path.concat(`boleto-comprovante`), {responseType: 'arraybuffer', params: params});
     }
     
 }

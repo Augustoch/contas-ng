@@ -1,6 +1,6 @@
 import { PesquisaFormComponent } from './pesquisa-form.component';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { MaterialModule } from 'src/app/components/shared/material-util.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -9,6 +9,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     imports: [CommonModule, MaterialModule,ReactiveFormsModule],
     exports: [PesquisaFormComponent],
     declarations: [PesquisaFormComponent],
-    providers: [],
+    providers: [DatePipe],
 })
 export class PesquisaFormModule { }

@@ -27,6 +27,14 @@
         adicione a vencimento
       </mat-error>
     </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Empresa responsável</mat-label>
+      <mat-select formControlName="idEmpresaResposavel">
+        <mat-option *ngFor="let empresa of empresas" [value]="empresa.id">
+          {{ empresa.descricao }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     <mat-form-field>
       <mat-label>Comentários adicionais</mat-label>
       <textarea

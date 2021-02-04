@@ -1,4 +1,4 @@
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
 import { ConfirmDialogService } from './confirm-dialog.service';
 import { Mensagem } from './../../../model/mensagem';
 import { Component, Inject, OnInit } from '@angular/core';
@@ -12,7 +12,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export class ConfirmDialogComponent implements OnInit {
     
-    public subject :BehaviorSubject<Boolean>;
+    public subject :Subject<Boolean>;
     
     constructor(
         public dialogRef: MatDialogRef<ConfirmDialogComponent>,

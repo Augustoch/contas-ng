@@ -11,7 +11,7 @@
           
           <mat-form-field>
             <mat-label>Senha</mat-label>
-            <input formControlName="senha" type="password" matInput  />
+            <input class="no-uppercase" formControlName="senha" type="password" matInput  />
             <mat-error *ngIf="formLogin.controls.senha.hasError('required')">
               Senha requerida
             </mat-error>

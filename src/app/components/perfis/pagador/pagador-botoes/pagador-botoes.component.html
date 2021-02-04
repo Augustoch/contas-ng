@@ -1,0 +1,78 @@
+<mat-divider></mat-divider>
+<div class="botoes-container">
+  <button
+    (click)="abrirFormConta()"
+    mat-raised-button
+    matTooltip="Nova conta"
+    color="primary"
+  >
+    <mat-icon>add_box</mat-icon>
+  </button>
+
+  <button
+    [disabled]="desabilitaParaMultiplasSelecoes()"
+    (click)="deletar()"
+    mat-raised-button
+    color="warn"
+    matTooltip="Apagar conta"
+  >
+    <mat-icon>delete</mat-icon>
+  </button>
+  <button
+    [disabled]="desabilitaParaMultiplasSelecoes()"
+    (click)="verComentario()"
+    mat-raised-button
+    matTooltip="Ver comentário"
+    style="background-color: #8bde16"
+  >
+    <mat-icon>comment</mat-icon>
+  </button>
+  <button
+    [disabled]="desabilitaParaMultiplasSelecoes()"
+    (click)="visualizarBoleto()"
+    mat-raised-button
+    matTooltip="Visualizar boleto "
+    style="background-color: #ffffff"
+  >
+    <mat-icon>picture_as_pdf</mat-icon>
+  </button>
+  <button
+    [disabled]="desabilitaBtnComprovante()"
+    (click)="visualizarComprovante()"
+    mat-raised-button
+    matTooltip="Visualizar comprovante "
+    style="background-color: #0095ec"
+  >
+    <mat-icon>picture_as_pdf</mat-icon>
+  </button>
+  <button
+    [disabled]="desabilitaBtnPagar()"
+    (click)="pagar()"
+    mat-raised-button
+    matTooltip="Pagar"
+    style="background-color: #09ff00"
+  >
+    <mat-icon>check_box</mat-icon>
+  </button>
+  <button
+    [disabled]="desabilitarBtnDownload()"
+    (click)="baixarBoletosComprovante()"
+    mat-raised-button
+    matTooltip="Baixa boleto e comprovante"
+    style="background-color: #e7d911"
+  >
+    <mat-icon>file_download</mat-icon>
+  </button>
+</div>
+
+<div class="disp-leg">
+  <div class="posicao-leg">
+    <div class="legenda vencida"></div>
+    <span>Vencida</span>
+  </div>
+  <div class="posicao-leg">
+    <div class="legenda vence-hoje"></div>
+    <span>Vence hoje</span>
+  </div>
+</div>
+<mat-divider></mat-divider>

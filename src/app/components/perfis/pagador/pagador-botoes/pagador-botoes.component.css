@@ -1,0 +1,30 @@
+.legenda {
+    width: 24px;
+    height: 21px;
+  }
+  
+  .vencida {
+    background-color: #ff000c3d !important;
+  }
+  
+  .vence-hoje {
+    background-color: #ffeb017d !important;
+  }
+  
+  .posicao-leg {
+    display: flex;
+    align-items: center;
+  }
+  
+  .disp-leg {
+    display: flex;
+    position: absolute;
+    right: 0%;
+  }
+  
+  
+  .botoes-container{
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+  }

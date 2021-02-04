@@ -1,20 +1,24 @@
 .container-login {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    justify-content: center;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
 }
 
-.continer-fields{
-    height: 100%;
-    width: 20%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    display: flex;
+.continer-fields {
+  height: 100%;
+  width: 20%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
-.form-flex{
-    display: flex;
-    flex-direction: column;
+.form-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.no-uppercase {
+  text-transform: none;
 }

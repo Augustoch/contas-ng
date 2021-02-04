@@ -1,3 +1,5 @@
+import { PagadorBotoesModule } from './pagador-botoes/pagador-botoes.module';
+import { EmpresaModule } from './../../shared/empresa/empresa.module';
 import { PesquisaFormModule } from './pesquisa-form/pesquisa-form.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PagadorDataService } from './pagador.data-service';
@@ -17,14 +19,15 @@ import { ViewPDFModule } from '../../shared/pdf/view-pdf.module';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    FormContaModule,
     MaterialModule,
     ViewPDFModule,
     ContaPagamentoModule,
     PagadorListModule,
     ContaBancoModule,
     ComentarioModule,
-    PesquisaFormModule
+    PesquisaFormModule,
+    EmpresaModule,
+    PagadorBotoesModule
   ],
   exports: [PagadorComponent],
   declarations: [PagadorComponent],

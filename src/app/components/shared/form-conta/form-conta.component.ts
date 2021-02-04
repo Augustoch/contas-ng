@@ -1,3 +1,5 @@
+import { Empresa } from './../../../model/empresa';
+import { EmpresaService } from './../../../services/empresa.service';
 import { PagadorDataService } from './../../perfis/pagador/pagador.data-service';
 import { BehaviorSubject } from 'rxjs';
 import { ConfirmDialogService } from '../confirm-dialog/confirm-dialog.service';
@@ -7,6 +9,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 @Component({
   selector: 'form-conta',
@@ -16,7 +19,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class FormContaComponent implements OnInit {
   arquivo: any;
   conta: FormGroup;
-  //foiSalvo = new BehaviorSubject<boolean>(false);
+  empresas: Array<Empresa>
 
   constructor(
     private _fb: FormBuilder,
@@ -24,7 +27,8 @@ export class FormContaComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private _cd: ConfirmDialogService,
     public dialogRef: MatDialogRef<FormContaComponent>,
-    private _pagadoDS: PagadorDataService
+    private _pagadoDS: PagadorDataService,
+    private _empresaService: EmpresaService
   ) {}
 
   ngOnInit() {
@@ -33,8 +37,15 @@ export class FormContaComponent implements OnInit {
       comentarios: null,
       vencimento: [null, Validators.required],
       boleto: [null, Validators.required],
+      idEmpresaResposavel: [null, Validators.required]
     });
-    
+    this.obterEmpresas();
+  }
+
+  private obterEmpresas() {
+    this._empresaService.obterEmpresas().subscribe((empresas) => {
+      this.empresas = empresas;
+    });
   }
 
   handleFileInput(event: any) {

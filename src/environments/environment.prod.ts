@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  API_URL: 'http://localhost:8090'
+  API_URL: 'https://ingrid-test-app.herokuapp.com'
 };
 
 export const apendApi = (append: string) => `${environment.API_URL}/${append}`;

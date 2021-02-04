@@ -33,7 +33,7 @@ export class RequestInterceptor implements HttpInterceptor {
     this.metodo = request.method;
     this.naoMetodoGet = this.metodo !== 'GET';
     this.naoEAuthReques = !request.url.includes('auth');
-    return next.handle(request).pipe(/* timeout(5000), */
+    return next.handle(request).pipe(
       tap((res: any) => {
         if (res.status) this.spinnerService.esconder();
         if (res.status && this.naoEAuthReques && this.naoMetodoGet)
@@ -62,6 +62,13 @@ export class RequestInterceptor implements HttpInterceptor {
     if (err.status === 403) {
       this._snackBar.open(
         `${err.error.error} \n ${err.error.message}`,
+        'Fechar',
+        { duration: 3000 }
+      );
+    }
+    if (err.status === 400) {
+      this._snackBar.open(
+        ` Usuário ou senha inválidos \n ${err.message} `,
         'Fechar',
         { duration: 3000 }
       );
