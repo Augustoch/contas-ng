@@ -3,30 +3,7 @@
     <p>
       <mat-toolbar class="justify-center">
         <span>Pagar/Lançar boleto</span>
-        <div class="posicao-btn-menu">
-          <button mat-button [matMenuTriggerFor]="menu">
-            <mat-icon>menu</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu">
-            <button (click)="cadastrarConta()" mat-menu-item>
-              Cadastrar conta
-            </button>
-            <button (click)="cadastrarEmpresa()" mat-menu-item>
-              Cadastrar empresa
-            </button>
-          </mat-menu>
-        </div>
-        <div class="posicao-btn-user">
-          <button mat-button [matMenuTriggerFor]="logMenu">
-            <mat-icon>person</mat-icon>
-          </button>
-          <mat-menu #logMenu="matMenu">
-            <button (click)="logOut()" mat-menu-item>
-              logout
-            </button>
-          </mat-menu>
-          <span>{{this.authenticationService.getUserName().toUpperCase()}}</span>
-        </div>
+        <logout></logout>
       </mat-toolbar>
     </p>
   </div>

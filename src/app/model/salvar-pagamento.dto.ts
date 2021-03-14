@@ -4,4 +4,5 @@ export interface SalvarPagamentoDTO{
     comentarioDePagamento: string;
     comprovante: any;
     idEmpresaPagamento: number;
+    dataPagamento: Date;
 }

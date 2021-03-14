@@ -1,0 +1,61 @@
+<div class="container-header">
+  <p>
+    <mat-toolbar class="justify-center">
+      <span>Cadastro de usuário</span>
+    </mat-toolbar>
+  </p>
+</div>
+<form [formGroup]="formUser" class="full-space ">
+  <div class="form-container">
+    <mat-form-field>
+      <mat-label>Usuario</mat-label>
+      <input formControlName="usuario" matInput autocomplete="off" />
+      <mat-error *ngIf="formUser.controls.usuario.hasError('required')">
+        Usuario requerido
+      </mat-error>
+      <mat-error *ngIf="formUser.controls.usuario.hasError('minlength')">
+        Tamanho mínimo é de 5 caracteres
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Senha</mat-label>
+      <input
+        class="no-uppercase"
+        formControlName="senha"
+        type="password"
+        matInput
+        (keyup)="checarSenha()"
+      />
+      <mat-hint align="start"><strong>No mínimo 8 caracteres, uma letra minúscula, uma maiúscula e um caractere especial</strong> </mat-hint>
+      <mat-error *ngIf="formUser.controls.senha.hasError('required')">
+        Senha requerida
+      </mat-error>
+      <mat-error *ngIf="formUser.controls.senha.hasError('pattern')">
+        No mínimo 8 caracteres, uma letra minúscula, uma maiúscula e um caractere especial
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Repita a senha</mat-label>
+      <input
+        class="no-uppercase"
+        formControlName="senhaEspelho"
+        type="password"
+        matInput
+        (keyup)="checarSenha()"
+      />
+      <mat-error *ngIf="formUser.controls.senhaEspelho.hasError('senhasNaoBatem')">
+        Senhas não batem
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Perfis</mat-label>
+      <mat-select formControlName="perfis" multiple>
+        <mat-option *ngFor="let perfil of perfis" [value]="perfil">{{perfil.nome}}</mat-option>
+      </mat-select>
+    </mat-form-field>    
+    <button (click)="salvar()" 
+    [disabled]="this.formUser.invalid"
+     mat-raised-button>Salvar</button>
+  </div>
+</form>

@@ -16,8 +16,7 @@ export class PagadorListComponent implements OnInit, AfterViewInit {
     'idConta',
     'descricaoConta',
     'vencimento',
-    'situacaoConta',
-    'acoes',
+    'situacaoConta'
   ];
   @ViewChild(MatSort) sort: MatSort;
 
@@ -36,7 +35,10 @@ export class PagadorListComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  obterListaDeConta(pesquisa?: PesquisaContaDTO) {
+  private obterListaDeConta(pesquisa?: PesquisaContaDTO) {
+  
+    pesquisa.preecherDataComRange60Dias();
+    
     this._boleto.obterContas(pesquisa).subscribe((listaDeContas) => {
       this.pagadorDS.limparSelecao();
       this.pagadorDS.dataSource.data = listaDeContas;

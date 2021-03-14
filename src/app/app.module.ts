@@ -1,3 +1,4 @@
+import { AdministradorModule } from './components/perfis/administrador/administrador.module';
 import { SpinnerContainerModule } from './components/shared/spinner/spinner-container.module';
 import { PagadorModule } from './components/perfis/pagador/pagador.module';
 import { LancadorModule } from './components/perfis/lancador/lancador.module';
@@ -36,7 +37,8 @@ import { JWTInterceptorModule } from './util/interceptors/jwt/jwt-interceptor.mo
     ViewPDFModule,
     RequestInterceptorModule,
     JWTInterceptorModule,
-    SpinnerContainerModule
+    SpinnerContainerModule,
+    AdministradorModule
     
   ],
   providers: [],

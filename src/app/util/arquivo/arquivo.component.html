@@ -1,6 +1,6 @@
-<div class="margin">
+<div [class.required]="this.control?.hasError('required') && this.control?.touched" [class.low-opacity]="disabled" class="margin">
     <label for="file">{{label}}</label>
-    <input
+    <input class="input-width"
       type="file"
       id="file"
       [accept]="accept"
@@ -8,5 +8,13 @@
       (change)="handleFileInput($event)"
       formControlName="boleto"
       (click)="click()"
+      size="10485760"
     />
+    
+    <mat-error *ngIf="this.control?.hasError('required') && this.control?.touched">
+      Adicione um arquivo
+    </mat-error>
+    <mat-error *ngIf="this.control?.hasError('sizeEmMBExcedido')">
+      Tamanho do arquivo maior que 10MB
+    </mat-error>
   </div>

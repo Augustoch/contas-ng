@@ -1,0 +1,11 @@
+<div class="posicao-btn-user">
+    <button mat-button [matMenuTriggerFor]="logMenu">
+      <mat-icon>person</mat-icon>
+    </button>
+    <mat-menu #logMenu="matMenu">
+      <button (click)="logOut()" mat-menu-item>
+        Logout
+      </button>
+    </mat-menu>
+    <span>{{this.authenticationService.getUserName().toUpperCase()}}</span>
+  </div>

@@ -1,4 +1,6 @@
 export interface Perfil {
-    nome: string;
-    rota: string;
+  id: 0;
+  authority: string;
+  nome: string;
+  rota: string;
 }

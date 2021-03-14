@@ -13,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class Login implements OnInit{
   
   formLogin: FormGroup;
-  returnUrl: string = 'pagador';
+  returnUrl: string = 'perfil';
   error = '';
   value = 'limpar';
   

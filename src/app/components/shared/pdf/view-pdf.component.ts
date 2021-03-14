@@ -23,10 +23,12 @@ export class ViewPDFComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.as.obterArquivo(this.data.idArquivo).subscribe((arquivo) => {
-      this.initalFile = arquivo;
-      this.pdfSrc = arquivo;
-    });
+    if (this.data.idArquivo) {
+      this.as.obterArquivo(this.data.idArquivo).subscribe((arquivo) => {
+        this.initalFile = arquivo;
+        this.pdfSrc = arquivo;
+      });
+    }
 
     this.arquivo.valueChanges.subscribe((value) => {
       if (value) {

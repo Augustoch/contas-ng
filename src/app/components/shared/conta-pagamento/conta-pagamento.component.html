@@ -21,12 +21,18 @@
     </div>
     <div>
       <mat-form-field appearance="fill">
-        <mat-label>Empresa responsável</mat-label>
+        <mat-label>Empresa pagamento</mat-label>
         <mat-select formControlName="idEmpresaPagamento">
           <mat-option *ngFor="let empresa of empresas" [value]="empresa.id">
             {{ empresa.descricao }}
           </mat-option>
         </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Data de pagamento</mat-label>
+        <input matInput type="date" formControlName="dataPagamento" />
       </mat-form-field>
     </div>
     <div>
@@ -43,14 +49,7 @@
       </mat-form-field>
     </div>
     <div class="margin">
-      <label for="file">Comprovante de pagamento: </label>
-      <input
-      formControlName="comprovante"
-        type="file"
-        id="file"
-        accept="application/pdf"
-        (change)="handleFileInput($event)"
-      />
+      <arquivo label="Comprovante de pagamento: " accept="application/pdf" formControlName="comprovante"></arquivo>
     </div>
   </form>
 </div>

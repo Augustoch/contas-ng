@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
+import { maxSizeMB } from 'src/app/util/utils';
 
 @Component({
   selector: 'form-conta',
@@ -35,7 +36,7 @@ export class FormContaComponent implements OnInit {
       descricao: [null, Validators.required],
       comentarios: null,
       vencimento: [null, Validators.required],
-      boleto: [null, Validators.required],
+      boleto: [null,  Validators.compose([Validators.required, maxSizeMB(10)])],
       idEmpresaResposavel: [null, Validators.required]
     });
     this.obterEmpresas();
@@ -69,5 +70,13 @@ export class FormContaComponent implements OnInit {
         this.fecharDialog()
       }
     });
+  }
+  
+  checarArquivo(desabilitar: boolean){
+    if(desabilitar){
+      this.conta.controls.boleto.disable();
+    } else{
+      this.conta.controls.boleto.enable();      
+    }
   }
 }

@@ -25,9 +25,21 @@
           </mat-form-field>
         </div>
         <div>
+          <mat-form-field>
+            <mat-label>Pagamento inicial</mat-label>
+            <input formControlName="pagInicial" matInput type="date" />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-label>Pagamento final</mat-label>
+            <input formControlName="pagFinal" matInput type="date" />
+          </mat-form-field>
+        </div>
+        <div>
           <mat-form-field appearance="fill">
             <mat-label>Situação</mat-label>
-            <mat-select formControlName="situacao">
+            <mat-select formControlName="situacaoConta">
               <mat-option
                 *ngFor="let situacao of sitaucoes"
                 [value]="situacao.id"

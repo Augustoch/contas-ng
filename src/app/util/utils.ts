@@ -1,4 +1,5 @@
-import { HttpParams } from "@angular/common/http";
+import { AbstractControl } from '@angular/forms';
+import { HttpParams } from '@angular/common/http';
 
 export const uppercase = (obj: any) => {
   if (typeof obj === 'object') {
@@ -47,6 +48,25 @@ export const httpParams = (obj) => {
       params = params.append(key, obj[key]);
     }
   }
-  
-  return {params}
+
+  return { params };
 };
+
+export const maxSizeMB = (size: number) => {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    const sizeEmMB = size * 1048576;
+    if (control.value?.size > sizeEmMB) {
+      return { sizeEmMBExcedido: true };
+    } else {
+      return null;
+    }
+  };
+};
+
+export const stringVazia  = (control: AbstractControl) => {
+    if (control.value === '') {
+      return { invalidValue: true };
+    } else {
+      return null;
+    }
+  };

@@ -34,6 +34,7 @@ export class RequestInterceptor implements HttpInterceptor {
     this.naoMetodoGet = this.metodo !== 'GET';
     this.naoEAuthReques = !request.url.includes('auth');
     return next.handle(request).pipe(
+      timeout(30000),
       tap((res: any) => {
         if (res.status) this.spinnerService.esconder();
         if (res.status && this.naoEAuthReques && this.naoMetodoGet)
@@ -47,25 +48,21 @@ export class RequestInterceptor implements HttpInterceptor {
   }
 
   private erroHandle(err: any) {
+    if (err?.error?.message) {
+      this._snackBar.open(err.error.message, 'Entendi!');
+    }
+
+    if (err.name == 'TimeoutError') {
+      this._snackBar.open(`Tempo de requisição excedido`, 'Fechar', {
+        duration: 30000,
+      });
+    }
     if (err.status === 401) {
       // auto logout if 401 response returned from api
       this.authenticationService.logout();
       location.reload();
     }
-    if (err.status === 500) {
-      this._snackBar.open(
-        `${err.error.exception} \n ${err.error.message}`,
-        'Fechar',
-        { duration: 3000 }
-      );
-    }
-    if (err.status === 403) {
-      this._snackBar.open(
-        `${err.error.error} \n ${err.error.message}`,
-        'Fechar',
-        { duration: 3000 }
-      );
-    }
+
     if (err.status === 400) {
       this._snackBar.open(
         ` Usuário ou senha inválidos \n ${err.message} `,

@@ -11,21 +11,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pagador.component.css'],
 })
 export class PagadorComponent implements OnInit {
-  constructor(
-    private dialog: MatDialog,
-    private _pagadorDS: PagadorDataService,
-    public authenticationService: AuthenticationService
-  ) {}
+  constructor(public authenticationService: AuthenticationService) {}
 
   ngOnInit() {}
-
-  cadastrarConta() {
-    this.dialog.open(ContaBancoComponent, { width: '50%', height: '50%' });
-  }
-
-  cadastrarEmpresa() {
-    this.dialog.open(EmpresaComponent, { width: '50%', height: '50%' });
-  }
 
   logOut() {
     this.authenticationService.logout();

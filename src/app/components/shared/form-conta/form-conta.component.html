@@ -47,8 +47,9 @@
     </mat-form-field>
     <div>
       <arquivo label="Boleto de pagamento: " accept="application/pdf" formControlName="boleto"></arquivo>
+      <mat-checkbox (change)="checarArquivo($event.checked)" >Conta sem boleto</mat-checkbox>
     </div>    
-    <div class="btns-salve">
+    <div class="btns-salve  btn-margim-top">
       <button (click)="salvar()" mat-raised-button color="primary">
         Salvar
       </button>

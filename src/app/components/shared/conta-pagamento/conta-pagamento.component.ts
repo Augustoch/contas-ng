@@ -1,3 +1,4 @@
+import { maxSizeMB } from './../../../util/utils';
 import { PagadorDataService } from './../../perfis/pagador/pagador.data-service';
 import { ContaPagarService } from 'src/app/services/boleto.service';
 import { SalvarPagamentoDTO } from './../../../model/salvar-pagamento.dto';
@@ -38,13 +39,17 @@ export class ContaPagamentoComponent implements OnInit {
     this.contaPagamento = this.fb.group({
       idContaSaida: [null, Validators.required],
       comentarioDePagamento: null,
-      comprovante: null,
-      idEmpresaPagamento: [null, Validators.required]
+      comprovante: [
+        null,
+        Validators.compose([Validators.required, maxSizeMB(10)]),
+      ],
+      idEmpresaPagamento: [null, Validators.required],
+      dataPagamento: [null, Validators.required],
     });
     this.obterContaBancaria();
     this.obterEmpresas();
   }
-  
+
   private obterEmpresas() {
     this._empresaService.obterEmpresas().subscribe((empresas) => {
       this.empresas = empresas;
@@ -62,12 +67,11 @@ export class ContaPagamentoComponent implements OnInit {
   }
 
   salvar() {
-    if (this.contaPagamento.valid && this.arquivo) {
+    if (this.contaPagamento.valid) {
       const value = this.contaPagamento.value as SalvarPagamentoDTO;
-      value.comprovante = this.arquivo;
       value.idContaPagar = this.data.idConta;
-      this._cp.salvarPagamento(value).subscribe(()=>{
-        this._pagadorDS.atualizarLista()
+      this._cp.salvarPagamento(value).subscribe(() => {
+        this._pagadorDS.atualizarLista();
         this.dialogRef.close();
       });
     } else {

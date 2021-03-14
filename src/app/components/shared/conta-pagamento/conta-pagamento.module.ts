@@ -1,17 +1,13 @@
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
+import { ArquivoModule } from './../../../util/arquivo/arquivo.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatSelectModule } from '@angular/material/select';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { ContaPagamentoComponent } from './conta-pagamento.component';
-import { MatInputModule } from '@angular/material/input';
 import { MaterialModule } from '../material-util.module';
 
 @NgModule({
-  imports: [CommonModule, MaterialModule, ReactiveFormsModule],
+  imports: [CommonModule, MaterialModule, ReactiveFormsModule, ArquivoModule],
   exports: [ContaPagamentoComponent],
   declarations: [ContaPagamentoComponent],
   providers: [],

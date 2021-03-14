@@ -7,7 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 
 @Injectable({ providedIn: 'root' })
 export class PagadorDataService {
-  private atualizarPagadorList = new Subject<Object>();
+  private atualizarPagadorList = new Subject<PesquisaContaDTO>();
   selection = new SelectionModel<ListagemDeContaDTO>(true, []);
   ultimaPesquisa: PesquisaContaDTO | undefined;
   dataSource = new MatTableDataSource<ListagemDeContaDTO>();
@@ -20,11 +20,11 @@ export class PagadorDataService {
 
   atualizarLista(object?: PesquisaContaDTO) {
     this.ultimaPesquisa = object;
-    this.atualizarPagadorList.next(object as Object);
+    this.atualizarPagadorList.next(object);
   }
 
   atualizarComUltimoFiltro() {
-    this.atualizarPagadorList.next(this.ultimaPesquisa as Object);
+    this.atualizarPagadorList.next(this.ultimaPesquisa);
   }
   
   limparSelecao(){

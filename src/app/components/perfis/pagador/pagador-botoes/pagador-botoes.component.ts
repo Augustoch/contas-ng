@@ -32,8 +32,8 @@ export class PagadorBotoesComponent implements OnInit {
 
   abrirFormConta() {
     const contaForm = this.dialog.open(FormContaComponent, {
-      width: '40%',
-      height: '50%',
+      width: '50%',
+      height: '60%',
       disableClose: true,
     });
   }

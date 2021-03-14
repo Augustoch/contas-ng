@@ -20,9 +20,13 @@
   display: flex;
   justify-content: flex-start;
 }
-.btn-flex{
+.btn-flex {
   width: 17%;
   display: flex;
   justify-content: space-between;
-  
+}
+
+.sem-boleto {
+  display: flex;
+  justify-content: center;
 }

@@ -1,3 +1,4 @@
+import { LogoutModule } from './../../shared/logout/logout.module';
 import { PagadorBotoesModule } from './pagador-botoes/pagador-botoes.module';
 import { EmpresaModule } from './../../shared/empresa/empresa.module';
 import { PesquisaFormModule } from './pesquisa-form/pesquisa-form.module';
@@ -27,7 +28,8 @@ import { ViewPDFModule } from '../../shared/pdf/view-pdf.module';
     ComentarioModule,
     PesquisaFormModule,
     EmpresaModule,
-    PagadorBotoesModule
+    PagadorBotoesModule,
+    LogoutModule
   ],
   exports: [PagadorComponent],
   declarations: [PagadorComponent],

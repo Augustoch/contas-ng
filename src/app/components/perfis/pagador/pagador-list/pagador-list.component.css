@@ -21,7 +21,7 @@ tr:nth-child(even) {
 }
 
 .coluna-desc{
-    width: 30%;
+    width: 20%;
 }
 
 .col-situacao{
@@ -30,4 +30,8 @@ tr:nth-child(even) {
 
 .col-venci{
     width: 8%;
+}
+
+.coluna-chkb{
+    width: 3%;
 }

@@ -1,3 +1,6 @@
+import { PesquisaContaDTO } from './../../../../model/pesquisa-conta.dto';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { stringVazia } from './../../../../util/utils';
 import { DadoContaBancaria } from './../../../../model/dado-conta-bancaria';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -17,16 +20,19 @@ export class PesquisaFormComponent implements OnInit {
     sitaucoes = [{ id:'AGUARDANDO_PAGAMENTO', desc: 'AGUARDANDO PAGAMENTO'}, {id:'PAGO', desc: 'PAGO'},{id:'AGUARDANDO_AUTORIZACAO', desc: 'AGUARDANDO AUTORIZAÇÃO'}];
     
     constructor(private _fb: FormBuilder, private _pagadorDS: PagadorDataService,
-        private cb: ContaBancoService, private datePipe: DatePipe
+        private cb: ContaBancoService,
+        private _snackBar: MatSnackBar,
     ) { }
 
     ngOnInit() { 
         this.pesquisaContaDTO = this._fb.group({
             id: null,
             descricao: null,
-            vencInicial: null,
-            vencFinal: null,
-            situacao: null,
+            vencInicial: [null, stringVazia],
+            vencFinal: [null, stringVazia],
+            pagInicial: [null, stringVazia],
+            pagFinal: [null, stringVazia],
+            situacaoConta: null,
             idContaSaida: null
           })
           this.obterContaBancaria();
@@ -40,7 +46,11 @@ export class PesquisaFormComponent implements OnInit {
       }
     
     pesquisar(){
-        this._pagadorDS.atualizarLista(this.pesquisaContaDTO.value);
+        if(this.pesquisaContaDTO.valid){
+            this._pagadorDS.atualizarLista(new PesquisaContaDTO(this.pesquisaContaDTO.value));            
+        }else{
+            this._snackBar.open('Verifique os campos!', 'X');
+        }
     }
     
     limpar(){

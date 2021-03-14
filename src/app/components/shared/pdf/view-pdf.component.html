@@ -1,52 +1,65 @@
-<div class="header-container">
-  <div class="header-pdf">
-    <h1>{{ data.nome }}</h1>
+<div *ngIf="data.idArquivo; then comBoleto; else semBoleto">
+  here is ignored
+</div>
+<ng-template #comBoleto>
+  <div >
+    <div class="header-container">
+      <div class="header-pdf">
+        <h1>{{ data.nome }}</h1>
 
-    <button
-      matTooltip="Download"
-      mat-raised-button
-      color="primary"
-      (click)="download()"
-    >
-      <mat-icon>cloud_download</mat-icon>
-    </button>
-  </div>
-  <div class="add-container">
-    <div class="sub-add-container">
-      <div>
-        <arquivo
-          label="Novo arquivo"
-          accept="application/pdf"
-          [formControl]="arquivo"
-        ></arquivo>
-      </div>
-      <div *ngIf="temArquivoNovo()" class="btn-flex">
         <button
-          mat-mini-fab
+          matTooltip="Download"
+          mat-raised-button
           color="primary"
-          style="background-color: #09ff00"
-          matTooltip="Atualizar pdf"
-          (click)="atualizarPDF()"
+          (click)="download()"
         >
-          <mat-icon>done</mat-icon>
+          <mat-icon>cloud_download</mat-icon>
         </button>
+      </div>
+      <div class="add-container">
+        <div class="sub-add-container">
+          <div>
+            <arquivo
+              label="Novo arquivo"
+              accept="application/pdf"
+              [formControl]="arquivo"
+            ></arquivo>
+          </div>
+          <div *ngIf="temArquivoNovo()" class="btn-flex">
+            <button
+              mat-mini-fab
+              color="primary"
+              style="background-color: #09ff00"
+              matTooltip="Atualizar pdf"
+              (click)="atualizarPDF()"
+            >
+              <mat-icon>done</mat-icon>
+            </button>
 
-        <button
-          matTooltip="Cancelar alteração"
-          mat-mini-fab
-          color="warn"
-          (click)="cancelar()"
-        >
-          <mat-icon>cancel</mat-icon>
-        </button>
+            <button
+              matTooltip="Cancelar alteração"
+              mat-mini-fab
+              color="warn"
+              (click)="cancelar()"
+            >
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
+    <div>
+      <pdf-viewer
+        [src]="pdfSrc"
+        [render-text]="true"
+        style="display: block"
+      ></pdf-viewer>
+    </div>
   </div>
-</div>
-<div>
-  <pdf-viewer
-    [src]="pdfSrc"
-    [render-text]="true"
-    style="display: block"
-  ></pdf-viewer>
-</div>
+</ng-template>
+
+<ng-template #semBoleto>
+  <div class="sem-boleto" >
+    <h1>Conta sem boleto</h1>
+  </div>
+</ng-template>
